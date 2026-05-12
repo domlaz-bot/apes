@@ -78,8 +78,8 @@
                 
                 <!-- VUE : ACCUEIL -->
                 <div id="view-accueil" class="view-content hidden p-4 animate-fade-in flex flex-col items-center">
-                    <!-- L'affiche de l'événement (taille réduite) -->
-                    <img src="https://i.goopics.net/e5hxl1.jpg" alt="Affiche Fête de l'École" class="max-h-[55vh] w-auto max-w-[85%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-6" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
+                    <!-- L'affiche de l'événement (Lien mis à jour) -->
+                    <img src="https://domlaz-bot.github.io/apes/affiche.jpeg" alt="Affiche Fête de l'École" class="max-h-[55vh] w-auto max-w-[85%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-6" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
                     
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center w-full">
                         <h2 class="font-black text-xl text-slate-800 mb-2">Bienvenue à la fête !</h2>
@@ -250,6 +250,16 @@
                                 <p class="text-xs text-slate-500">Tentez votre chance pour gagner des lots.</p>
                             </div>
                         </div>
+                        <!-- Animation : Quiz cinéma -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer" onclick="openQuizModal()">
+                            <div class="bg-fuchsia-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
+                                <i class="fa-solid fa-circle-question text-3xl"></i>
+                            </div>
+                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Quiz Cinéma</h3>
+                                <p class="text-xs text-slate-500">Adultes : testez vos connaissances et gagnez un lot.</p>
+                            </div>
+                        </div>
                         <!-- Animation : Restauration -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-orange-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
@@ -299,34 +309,21 @@
                     <div class="flex justify-center mb-8">
                         <div class="bg-red-600 text-white border-4 border-yellow-400 rounded-full px-6 py-2 shadow-lg flex items-center transform hover:scale-105 transition-transform">
                             <i class="fa-solid fa-ticket text-yellow-400 text-2xl mr-3"></i>
-                            <span class="font-black text-2xl tracking-wide">1 Ticket = 1 €</span>
+                            <span class="font-black text-2xl tracking-wide">1 Ticket = 0,50 €</span>
                         </div>
                     </div>
 
                     <!-- Offres spéciales -->
-                    <div class="space-y-3 mb-8">
-                        <!-- Offre 1 -->
-                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-1 shadow-md transform -rotate-1">
-                            <div class="bg-white border-2 border-dashed border-yellow-500 rounded-lg p-3 flex items-center justify-between">
-                                <div>
-                                    <h3 class="font-black text-lg text-slate-800">Carnet 5 Tickets</h3>
-                                    <span class="uppercase text-xs font-bold text-green-600 tracking-wider">+ 1 gratuit</span>
-                                </div>
-                                <div class="bg-slate-900 text-white font-black text-xl px-4 py-2 rounded-lg shadow-inner">
-                                    5 €
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Offre 2 -->
-                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-1 shadow-md transform rotate-1">
+                    <div class="mb-8">
+                        <!-- Offre Unique -->
+                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-1 shadow-md transform -rotate-1 max-w-sm mx-auto">
                             <div class="bg-white border-2 border-dashed border-yellow-500 rounded-lg p-3 flex items-center justify-between">
                                 <div>
                                     <h3 class="font-black text-lg text-slate-800">Carnet 10 Tickets</h3>
                                     <span class="uppercase text-xs font-bold text-green-600 tracking-wider">+ 2 gratuits</span>
                                 </div>
                                 <div class="bg-slate-900 text-white font-black text-xl px-4 py-2 rounded-lg shadow-inner">
-                                    10 €
+                                    5 €
                                 </div>
                             </div>
                         </div>
@@ -343,7 +340,7 @@
                                     <span class="font-bold text-slate-800">Menu Complet</span>
                                     <span class="text-xs text-slate-500">Hot-dog + Chips + Boisson</span>
                                 </div>
-                                <span class="font-bold text-red-600 bg-red-100 px-3 py-1 rounded-full text-sm">6 tickets</span>
+                                <span class="font-bold text-red-600 bg-red-100 px-3 py-1 rounded-full text-sm">12 tickets</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Pop-Corn</span>
@@ -351,19 +348,19 @@
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Chips seul</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Hot-Dog seul</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">3 tickets</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Glace</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
+                                <span class="font-medium text-slate-700">Hot-Dog seul</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">6 tickets</span>
+                            </li>
+                            <li class="flex justify-between items-center p-3 px-4">
+                                <span class="font-medium text-slate-700">Glace</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">4 tickets</span>
+                            </li>
+                            <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Boisson seule</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
                             </li>
                         </ul>
 
@@ -380,6 +377,10 @@
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
+                                <span class="font-medium text-slate-700">Quiz Cinéma (Adultes)</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                            </li>
+                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
                                 <span class="font-medium text-slate-700">Pêche aux canards</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
                             </li>
@@ -389,7 +390,7 @@
                             </li>
                             <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
                                 <span class="font-medium text-slate-700">Photobooth</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Ticket Tombola</span>
@@ -424,9 +425,9 @@
                 <div id="view-plan" class="view-content hidden p-4 animate-fade-in flex flex-col min-h-full">
                     <h2 class="text-2xl font-black text-slate-800 mb-4 text-center">Plan de la Fête</h2>
                     
-                    <!-- Carte visuelle (Cliquable) -->
+                    <!-- Carte visuelle (Lien mis à jour) -->
                     <div class="relative group cursor-pointer mb-2" onclick="openPlanModal()">
-                        <img src="https://i.goopics.net/jvcqlt.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white bg-white transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
+                        <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white bg-white transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
                         <!-- Superposition avec icône loupe -->
                         <div class="absolute inset-0 bg-black/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <div class="bg-slate-900/80 text-white px-3 py-2 rounded-full backdrop-blur-sm text-sm font-bold shadow-lg">
@@ -471,7 +472,7 @@
                     
                     <button onclick="switchTab('animations')" id="nav-animations" class="nav-btn flex flex-col items-center justify-center w-full py-2 transition-all duration-300">
                         <div class="icon-container mb-1 text-xl transition-all duration-300"><i class="fa-solid fa-masks-theater"></i></div>
-                        <span class="nav-label text-[10px] font-bold uppercase tracking-wider transition-colors duration-300">Animations</span>
+                        <span class="nav-label text-[10px] font-bold uppercase tracking-wider transition-colors duration-300">Anim.</span>
                     </button>
                     
                     <button onclick="switchTab('tarifs')" id="nav-tarifs" class="nav-btn flex flex-col items-center justify-center w-full py-2 transition-all duration-300">
@@ -496,24 +497,61 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="relative w-full h-full flex items-center justify-center p-4">
-            <img src="https://i.goopics.net/jvcqlt.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+            <!-- Lien mis à jour également ici -->
+            <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
         </div>
         <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
     </div>
 
+    <!-- Modal Quiz Cinéma -->
+    <div id="quiz-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeQuizModal()">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col max-h-[85vh] relative animate-fade-in">
+            <!-- En-tête -->
+            <div class="bg-fuchsia-600 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
+                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-clapperboard mr-2"></i> Le Quiz "Émojis-Ciné"</h3>
+                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeQuizModal()">&times;</button>
+            </div>
+            <!-- Contenu défilant -->
+            <div class="p-5 overflow-y-auto flex-1 no-scrollbar">
+                <p class="text-sm text-fuchsia-900 font-medium mb-6 bg-fuchsia-100 p-4 rounded-xl border border-fuchsia-200 shadow-inner text-center">
+                    🎬 <strong class="uppercase tracking-wider">Consigne :</strong><br>Retrouvez le titre du film caché derrière ces combinaisons d'émojis.
+                </p>
+                
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 shadow-sm">
+                    <ol class="space-y-3 text-2xl text-center text-slate-800 font-medium marker:text-fuchsia-500 marker:font-bold marker:text-lg list-decimal list-inside">
+                        <li class="pb-2 border-b border-slate-200/60">🦁 👑</li>
+                        <li class="pb-2 border-b border-slate-200/60">🧊 🚢 🌊</li>
+                        <li class="pb-2 border-b border-slate-200/60">🍫 🏭 🎫</li>
+                        <li class="pb-2 border-b border-slate-200/60">🦷 🦈 ⛵</li>
+                        <li class="pb-2 border-b border-slate-200/60">🦖 🧬 🌴</li>
+                        <li class="pb-2 border-b border-slate-200/60">🧙‍♂️ 👓 ⚡</li>
+                        <li class="pb-2 border-b border-slate-200/60">👻 🚫 🔫</li>
+                        <li class="pb-2 border-b border-slate-200/60">🐀 🍳 👨‍🍳</li>
+                        <li class="pb-2 border-b border-slate-200/60">🛸 🚲 🌕</li>
+                        <li class="pb-2 border-b border-slate-200/60">🎈 🏠 👴</li>
+                        <li class="pb-2 border-b border-slate-200/60">🕶️ 💊 🔫</li>
+                        <li class="pb-2 border-b border-slate-200/60">🍫 🏃‍♂️ 🍤</li>
+                        <li class="pb-2 border-b border-slate-200/60">🏴‍☠️ 🦜 ⚔️</li>
+                        <li class="pb-2 border-b border-slate-200/60 leading-tight">🥖 🚲 📸 <br><span class="text-xs text-fuchsia-600 font-normal italic block mt-1">(Indice : Un film français culte)</span></li>
+                        <li class="pb-2 border-b border-slate-200/60">🦸‍♂️ 🕷️ 🕸️</li>
+                        <li class="pb-2 border-b border-slate-200/60">🎸 💀 🇲🇽</li>
+                        <li class="pb-2 border-b border-slate-200/60">👨‍🦽 👨‍💼 🇫🇷</li>
+                        <li class="pb-2 border-b border-slate-200/60">🥊 🥩 🇮🇹</li>
+                        <li class="pb-2 border-b border-slate-200/60">🤡 🎈 🧒</li>
+                        <li class="pt-1">🚀 🪐 ⚔️</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- Pied de page -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 rounded-b-2xl shrink-0">
+                <button class="bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-fuchsia-700 hover:shadow-lg transition-all active:scale-95" onclick="closeQuizModal()">Fermer le quiz</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Script de l'application -->
     <script>
-        // 1. Génération des lumières du chapiteau
-        const lightsContainer = document.getElementById('lights-container');
-        for (let i = 0; i < 15; i++) {
-            const light = document.createElement('div');
-            const colorClass = i % 2 === 0 ? 'bg-yellow-400' : 'bg-red-500';
-            light.className = `w-2 h-2 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.8)] ${colorClass} animate-pulse`;
-            light.style.animationDelay = `${(i % 3) * 0.2}s`;
-            lightsContainer.appendChild(light);
-        }
-
-        // 2. Gestion de la navigation entre les vues
+        // Gestion de la navigation entre les vues
         function switchTab(tabId) {
             const views = document.querySelectorAll('.view-content');
             views.forEach(view => {
@@ -522,44 +560,94 @@
             });
 
             const activeView = document.getElementById('view-' + tabId);
-            activeView.classList.remove('hidden');
-            // Pour le plan et l'accueil, on utilise flex
-            if (tabId === 'plan' || tabId === 'accueil') {
-                activeView.classList.add('flex');
+            if (activeView) {
+                activeView.classList.remove('hidden');
+                // Pour le plan et l'accueil, on utilise flex
+                if (tabId === 'plan' || tabId === 'accueil') {
+                    activeView.classList.add('flex');
+                }
             }
 
             const navBtns = document.querySelectorAll('.nav-btn');
             navBtns.forEach(btn => {
                 btn.classList.remove('text-yellow-400', 'transform', '-translate-y-1');
                 btn.classList.add('text-slate-400');
-                btn.querySelector('.icon-container').classList.remove('drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]');
-                btn.querySelector('.nav-label').classList.remove('text-yellow-400');
+                if (btn.querySelector('.icon-container')) {
+                    btn.querySelector('.icon-container').classList.remove('drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]');
+                }
+                if (btn.querySelector('.nav-label')) {
+                    btn.querySelector('.nav-label').classList.remove('text-yellow-400');
+                }
             });
 
             const activeBtn = document.getElementById('nav-' + tabId);
-            activeBtn.classList.remove('text-slate-400');
-            activeBtn.classList.add('text-yellow-400', 'transform', '-translate-y-1');
-            activeBtn.querySelector('.icon-container').classList.add('drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]');
-            activeBtn.querySelector('.nav-label').classList.add('text-yellow-400');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-400');
+                activeBtn.classList.add('text-yellow-400', 'transform', '-translate-y-1');
+                if (activeBtn.querySelector('.icon-container')) {
+                    activeBtn.querySelector('.icon-container').classList.add('drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]');
+                }
+                if (activeBtn.querySelector('.nav-label')) {
+                    activeBtn.querySelector('.nav-label').classList.add('text-yellow-400');
+                }
+            }
             
             // Scroll to top when switching tab
-            document.querySelector('main').scrollTop = 0;
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.scrollTop = 0;
+            }
         }
 
-        // 3. Gestion de l'agrandissement du plan
+        // Gestion de l'agrandissement du plan
         function openPlanModal() {
             const modal = document.getElementById('plan-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex', 'animate-fade-in');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+            }
         }
 
         function closePlanModal() {
             const modal = document.getElementById('plan-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex', 'animate-fade-in');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
         }
 
+        // Gestion du Quiz Cinéma
+        function openQuizModal() {
+            const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+            }
+        }
+
+        function closeQuizModal() {
+            const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        // Attendre que le DOM soit complètement chargé avant d'exécuter le script
         document.addEventListener('DOMContentLoaded', () => {
+            // Génération des lumières du chapiteau
+            const lightsContainer = document.getElementById('lights-container');
+            // Vérification que le conteneur existe pour éviter l'erreur
+            if (lightsContainer) {
+                for (let i = 0; i < 15; i++) {
+                    const light = document.createElement('div');
+                    const colorClass = i % 2 === 0 ? 'bg-yellow-400' : 'bg-red-500';
+                    light.className = `w-2 h-2 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.8)] ${colorClass} animate-pulse`;
+                    light.style.animationDelay = `${(i % 3) * 0.2}s`;
+                    lightsContainer.appendChild(light);
+                }
+            }
+
             switchTab('accueil');
         });
     </script>
