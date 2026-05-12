@@ -241,7 +241,7 @@
                             </div>
                         </div>
                         <!-- Animation : Tombola -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer" onclick="openTombolaModal()">
                             <div class="bg-emerald-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-ticket text-3xl"></i>
                             </div>
@@ -306,11 +306,21 @@
                     </div>
 
                     <!-- Mise en évidence de la valeur du ticket -->
-                    <div class="flex justify-center mb-8">
+                    <div class="flex justify-center mb-4">
                         <div class="bg-red-600 text-white border-4 border-yellow-400 rounded-full px-6 py-2 shadow-lg flex items-center transform hover:scale-105 transition-transform">
                             <i class="fa-solid fa-ticket text-yellow-400 text-2xl mr-3"></i>
                             <span class="font-black text-2xl tracking-wide">1 Ticket = 0,50 €</span>
                         </div>
+                    </div>
+
+                    <!-- Moyens de paiement -->
+                    <div class="flex justify-center gap-3 mb-8">
+                        <span class="flex items-center bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-200 text-xs font-bold text-slate-700">
+                            <i class="fa-solid fa-coins text-yellow-500 mr-1.5 text-base"></i> Espèces
+                        </span>
+                        <span class="flex items-center bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-200 text-xs font-bold text-slate-700">
+                            <i class="fa-solid fa-credit-card text-blue-500 mr-1.5 text-base"></i> CB acceptée
+                        </span>
                     </div>
 
                     <!-- Offres spéciales -->
@@ -521,23 +531,13 @@
                     <ol class="space-y-3 text-2xl text-center text-slate-800 font-medium marker:text-fuchsia-500 marker:font-bold marker:text-lg list-decimal list-inside">
                         <li class="pb-2 border-b border-slate-200/60">🦁 👑</li>
                         <li class="pb-2 border-b border-slate-200/60">🧊 🚢 🌊</li>
-                        <li class="pb-2 border-b border-slate-200/60">🍫 🏭 🎫</li>
-                        <li class="pb-2 border-b border-slate-200/60">🦷 🦈 ⛵</li>
                         <li class="pb-2 border-b border-slate-200/60">🦖 🧬 🌴</li>
                         <li class="pb-2 border-b border-slate-200/60">🧙‍♂️ 👓 ⚡</li>
-                        <li class="pb-2 border-b border-slate-200/60">👻 🚫 🔫</li>
-                        <li class="pb-2 border-b border-slate-200/60">🐀 🍳 👨‍🍳</li>
                         <li class="pb-2 border-b border-slate-200/60">🛸 🚲 🌕</li>
-                        <li class="pb-2 border-b border-slate-200/60">🎈 🏠 👴</li>
-                        <li class="pb-2 border-b border-slate-200/60">🕶️ 💊 🔫</li>
-                        <li class="pb-2 border-b border-slate-200/60">🍫 🏃‍♂️ 🍤</li>
+                        <li class="pb-2 border-b border-slate-200/60">🐀 🍳 👨‍🍳</li>
                         <li class="pb-2 border-b border-slate-200/60">🏴‍☠️ 🦜 ⚔️</li>
                         <li class="pb-2 border-b border-slate-200/60 leading-tight">🥖 🚲 📸 <br><span class="text-xs text-fuchsia-600 font-normal italic block mt-1">(Indice : Un film français culte)</span></li>
-                        <li class="pb-2 border-b border-slate-200/60">🦸‍♂️ 🕷️ 🕸️</li>
-                        <li class="pb-2 border-b border-slate-200/60">🎸 💀 🇲🇽</li>
                         <li class="pb-2 border-b border-slate-200/60">👨‍🦽 👨‍💼 🇫🇷</li>
-                        <li class="pb-2 border-b border-slate-200/60">🥊 🥩 🇮🇹</li>
-                        <li class="pb-2 border-b border-slate-200/60">🤡 🎈 🧒</li>
                         <li class="pt-1">🚀 🪐 ⚔️</li>
                     </ol>
                 </div>
@@ -545,6 +545,35 @@
             <!-- Pied de page -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 rounded-b-2xl shrink-0">
                 <button class="bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-fuchsia-700 hover:shadow-lg transition-all active:scale-95" onclick="closeQuizModal()">Fermer le quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tombola -->
+    <div id="tombola-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeTombolaModal()">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col relative animate-fade-in">
+            <!-- En-tête -->
+            <div class="bg-emerald-500 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
+                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-ticket mr-2"></i> Tombola</h3>
+                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeTombolaModal()">&times;</button>
+            </div>
+            <!-- Contenu -->
+            <div class="p-6 flex-1">
+                <p class="text-slate-800 font-bold mb-6 text-center text-lg">Le principe est simple :</p>
+                <ul class="space-y-6 text-slate-700 font-medium">
+                    <li class="flex items-start bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                        <span class="text-2xl mr-3 leading-none">🎫</span>
+                        <span><strong>1 ticket Tombola (2€)</strong> = 1 enveloppe = 2 chances de gagner</span>
+                    </li>
+                    <li class="flex items-start bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                        <span class="text-2xl mr-3 leading-none">🎯</span>
+                        <span>Un tirage au sort final avec de super lots à gagner</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pied de page -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 rounded-b-2xl shrink-0">
+                <button class="bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95" onclick="closeTombolaModal()">Compris !</button>
             </div>
         </div>
     </div>
@@ -627,6 +656,23 @@
 
         function closeQuizModal() {
             const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        // Gestion de la Tombola
+        function openTombolaModal() {
+            const modal = document.getElementById('tombola-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+            }
+        }
+
+        function closeTombolaModal() {
+            const modal = document.getElementById('tombola-modal');
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex', 'animate-fade-in');
