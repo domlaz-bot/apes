@@ -56,18 +56,20 @@
                 <!-- Guirlande lumineuse décorative générée en JS -->
                 <div id="lights-container" class="absolute top-2 left-0 right-0 flex justify-around px-2 opacity-80"></div>
 
-                <div class="bg-white border-4 border-yellow-400 rounded-xl p-2 text-center relative mt-2 shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+                <div class="bg-white border-4 border-yellow-400 rounded-xl p-2 relative mt-2 shadow-[0_0_15px_rgba(250,204,21,0.5)] flex items-center justify-center">
                     <div class="absolute top-1 left-1 bottom-1 right-1 border-2 border-dotted border-slate-300 rounded-lg pointer-events-none"></div>
-                    <div class="flex justify-center mb-0.5 text-yellow-400">
-                        <i class="fa-solid fa-star mx-1 text-base"></i>
-                        <i class="fa-solid fa-star mx-1 text-lg drop-shadow-md"></i>
-                        <i class="fa-solid fa-star mx-1 text-base"></i>
-                    </div>
-                    <h1 class="text-lg font-black text-slate-800 tracking-tight leading-tight uppercase relative z-10">
+                    
+                    <!-- Étoile gauche -->
+                    <i class="fa-solid fa-star text-yellow-400 text-xl drop-shadow-md relative z-10 mx-2"></i>
+                    
+                    <h1 class="text-lg font-black text-slate-800 tracking-tight leading-tight uppercase relative z-10 text-center">
                         Fête de l'École
                         <br />
                         <span class="text-red-600 text-xl">Louis Aragon</span>
                     </h1>
+                    
+                    <!-- Étoile droite -->
+                    <i class="fa-solid fa-star text-yellow-400 text-xl drop-shadow-md relative z-10 mx-2"></i>
                 </div>
             </header>
 
@@ -185,7 +187,7 @@
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
                                 <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Tombola</h3>
-                                <p class="text-xs text-slate-500">Faites tourner la roue et gagnez des lots.</p>
+                                <p class="text-xs text-slate-500">Tentez votre chance pour gagner des lots.</p>
                             </div>
                         </div>
                         <!-- Atelier 4 -->
@@ -223,9 +225,17 @@
 
                 <!-- VUE : TARIFS -->
                 <div id="view-tarifs" class="view-content hidden p-4 animate-fade-in">
-                    <div class="text-center mb-6">
+                    <div class="text-center mb-4">
                         <h2 class="text-2xl font-black text-slate-800">Caisse & Tarifs</h2>
-                        <p class="text-slate-600 text-sm mt-2">La monnaie de la fête est le <strong class="text-red-600">Ticket Cinéma</strong> (1 ticket = 1€).</p>
+                        <p class="text-slate-600 text-sm mt-2">La monnaie unique de la fête est le <strong class="text-red-600">Ticket Cinéma</strong>.</p>
+                    </div>
+
+                    <!-- Mise en évidence de la valeur du ticket -->
+                    <div class="flex justify-center mb-8">
+                        <div class="bg-red-600 text-white border-4 border-yellow-400 rounded-full px-6 py-2 shadow-lg flex items-center transform hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-ticket text-yellow-400 text-2xl mr-3"></i>
+                            <span class="font-black text-2xl tracking-wide">1 Ticket = 1 €</span>
+                        </div>
                     </div>
 
                     <!-- Offres spéciales -->
@@ -275,6 +285,10 @@
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
+                                <span class="font-medium text-slate-700">Chips</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                            </li>
+                            <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Hot-Dog seul</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">3 tickets</span>
                             </li>
@@ -320,8 +334,17 @@
                 <div id="view-plan" class="view-content hidden p-4 animate-fade-in flex flex-col h-full">
                     <h2 class="text-2xl font-black text-slate-800 mb-4 text-center">Plan de la Fête</h2>
                     
-                    <!-- Carte visuelle -->
-                    <img src="https://i.goopics.net/jvcqlt.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white mb-6 bg-white" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
+                    <!-- Carte visuelle (Cliquable) -->
+                    <div class="relative group cursor-pointer mb-2" onclick="openPlanModal()">
+                        <img src="https://i.goopics.net/jvcqlt.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white bg-white transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
+                        <!-- Superposition avec icône loupe (visible au survol ou légèrement sur mobile) -->
+                        <div class="absolute inset-0 bg-black/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-slate-900/80 text-white px-3 py-2 rounded-full backdrop-blur-sm text-sm font-bold shadow-lg">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Agrandir
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-500 mb-6 italic"><i class="fa-solid fa-hand-pointer mr-1"></i> Touchez le plan pour l'agrandir</p>
 
                     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
                         <h3 class="font-bold text-slate-800 mb-3 flex items-center">
@@ -372,6 +395,18 @@
         </div>
     </div>
 
+    <!-- Modal d'agrandissement du plan (Lightbox en plein écran) -->
+    <div id="plan-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col items-center justify-center p-2 backdrop-blur-sm transition-opacity" onclick="closePlanModal()">
+        <button class="absolute top-6 right-6 text-white/80 hover:text-white text-4xl p-2 z-10 transition-colors cursor-pointer" onclick="closePlanModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <!-- L'image en plein écran garde ses proportions -->
+            <img src="https://i.goopics.net/jvcqlt.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+        </div>
+        <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
+    </div>
+
     <!-- Script de l'application -->
     <script>
         // 1. Génération des lumières du chapiteau
@@ -416,7 +451,20 @@
             activeBtn.querySelector('.nav-label').classList.add('text-yellow-400');
         }
 
-        // 3. Initialisation au chargement de la page
+        // 3. Gestion de l'agrandissement du plan (Lightbox)
+        function openPlanModal() {
+            const modal = document.getElementById('plan-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex', 'animate-fade-in');
+        }
+
+        function closePlanModal() {
+            const modal = document.getElementById('plan-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex', 'animate-fade-in');
+        }
+
+        // 4. Initialisation au chargement de la page
         document.addEventListener('DOMContentLoaded', () => {
             switchTab('accueil'); // Ouvre l'onglet accueil par défaut
         });
