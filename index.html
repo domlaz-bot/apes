@@ -83,7 +83,7 @@
                     
                     <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-200 text-center w-full">
                         <h2 class="font-black text-lg text-slate-800 mb-1">Bienvenue à la fête !</h2>
-                        <p class="text-xs text-slate-600 leading-tight">L'APES et l'équipe pédagogique sont heureux de vous accueillir pour cette soirée exceptionnelle sous les projecteurs.</p>
+                        <p class="text-xs text-slate-600 leading-tight">L'APES et l'équipe pédagogique vous souhaitent une excellente soirée.</p>
                         
                         <!-- Nouveau bouton pour donner son avis -->
                         <button onclick="openAvisModal()" class="mt-3 bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all w-full flex items-center justify-center active:scale-95">
@@ -570,12 +570,12 @@
             <div class="p-6 overflow-y-auto flex-1 no-scrollbar" id="avis-form-content">
                 <p class="text-sm text-slate-600 mb-4 text-center">Ce formulaire est **totalement anonyme**. Vos retours nous aident à améliorer les prochaines fêtes de l'école !</p>
                 
-                <!-- Action vers FormSubmit (classique avec ouverture d'onglet) -->
-                <form action="https://formsubmit.co/apes.solers77@gmail.com" method="POST" target="_blank" id="avis-form" class="space-y-4">
-                    <!-- Configuration FormSubmit invisible -->
-                    <input type="hidden" name="_subject" value="Nouvel avis sur la fête de l'école !">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_captcha" value="false">
+                <!-- Formulaire utilisant Web3Forms -->
+                <form id="avis-form" class="space-y-4">
+                    <!-- IMPORTANT : Remplacez VOTRE_CLE_ICI par la clé reçue par email -->
+                    <input type="hidden" name="access_key" value="2ba9a705-bccf-4ae9-b978-8b57f93e5173">
+                    <input type="hidden" name="subject" value="Nouvel avis sur la fête de l'école !">
+                    <input type="hidden" name="from_name" value="Avis Fête de l'École">
                     
                     <div>
                         <label class="block text-slate-700 font-bold mb-2" for="adore">Ce que vous avez adoré 💚</label>
@@ -588,7 +588,8 @@
                     </div>
                     
                     <button type="submit" id="submit-avis-btn" class="mt-2 bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95 flex justify-center items-center">
-                        <i class="fa-solid fa-paper-plane mr-2"></i> Envoyer mon avis
+                        <i class="fa-solid fa-paper-plane mr-2" id="submit-icon"></i> 
+                        <span id="submit-text">Envoyer mon avis</span>
                     </button>
                 </form>
             </div>
@@ -726,17 +727,44 @@
             }
         }
 
-        // Envoi classique du formulaire (Compatible avec les fichiers locaux)
+        // Envoi dynamique via Web3Forms (sans rechargement, sans nouvel onglet)
         document.getElementById('avis-form').addEventListener('submit', function(e) {
-            // Le navigateur va ouvrir la page de confirmation FormSubmit dans un nouvel onglet,
-            // garantissant la réception de l'e-mail.
+            e.preventDefault(); // Empêche le comportement par défaut (pas de nouvel onglet)
             
-            // On affiche le message de succès dans l'application après un petit délai
-            setTimeout(() => {
-                document.getElementById('avis-form-content').classList.add('hidden');
-                document.getElementById('avis-success-message').classList.remove('hidden');
-                this.reset();
-            }, 1000);
+            const form = e.target;
+            const btnText = document.getElementById('submit-text');
+            const btnIcon = document.getElementById('submit-icon');
+            
+            // Animation d'attente sur le bouton
+            btnText.innerText = "Envoi en cours...";
+            btnIcon.className = "fa-solid fa-circle-notch fa-spin mr-2";
+            
+            const formData = new FormData(form);
+            
+            // Requête invisible vers le serveur
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                if (response.status == 200) {
+                    // Succès : on affiche le message de remerciement
+                    document.getElementById('avis-form-content').classList.add('hidden');
+                    document.getElementById('avis-success-message').classList.remove('hidden');
+                    form.reset();
+                } else {
+                    // Erreur serveur
+                    alert("Oups, le service est momentanément indisponible. Réessayez plus tard.");
+                }
+            })
+            .catch(error => {
+                alert("Erreur de connexion internet. L'avis n'a pas pu être envoyé.");
+            })
+            .finally(() => {
+                // Remise à zéro du bouton dans tous les cas
+                btnText.innerText = "Envoyer mon avis";
+                btnIcon.className = "fa-solid fa-paper-plane mr-2";
+            });
         });
 
         // Attendre que le DOM soit complètement chargé avant d'exécuter le script
