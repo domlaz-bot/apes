@@ -78,16 +78,21 @@
                 
                 <!-- VUE : ACCUEIL -->
                 <div id="view-accueil" class="view-content hidden p-4 animate-fade-in flex flex-col items-center">
-                    <!-- L'affiche de l'événement (Lien mis à jour) -->
-                    <img src="https://domlaz-bot.github.io/apes/affiche.jpeg" alt="Affiche Fête de l'École" class="max-h-[55vh] w-auto max-w-[85%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-6" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
+                    <!-- L'affiche de l'événement -->
+                    <img src="https://domlaz-bot.github.io/apes/affiche.jpeg" alt="Affiche Fête de l'École" class="max-h-[42vh] w-auto max-w-[75%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
                     
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center w-full">
-                        <h2 class="font-black text-xl text-slate-800 mb-2">Bienvenue à la fête !</h2>
-                        <p class="text-sm text-slate-600">L'APES et l'équipe pédagogique sont heureux de vous accueillir pour cette soirée exceptionnelle sous les projecteurs.</p>
+                    <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-200 text-center w-full">
+                        <h2 class="font-black text-lg text-slate-800 mb-1">Bienvenue à la fête !</h2>
+                        <p class="text-xs text-slate-600 leading-tight">L'APES et l'équipe pédagogique sont heureux de vous accueillir pour cette soirée exceptionnelle sous les projecteurs.</p>
+                        
+                        <!-- Nouveau bouton pour donner son avis -->
+                        <button onclick="openAvisModal()" class="mt-3 bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all w-full flex items-center justify-center active:scale-95">
+                            <i class="fa-solid fa-comment-dots text-lg mr-2"></i> Donnez votre avis !
+                        </button>
                     </div>
 
                     <!-- Crédit -->
-                    <div class="mt-8 text-center w-full">
+                    <div class="mt-4 text-center w-full">
                         <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
                     </div>
                 </div>
@@ -97,7 +102,6 @@
                     <div class="bg-red-600 text-white rounded-xl p-4 mb-6 shadow-lg flex items-center justify-between">
                         <div>
                             <h2 class="font-bold text-lg">Ven. 12 Juin 2026</h2>
-                            <p class="text-red-100 text-sm">À partir de 17h30</p>
                         </div>
                         <i class="fa-regular fa-calendar-days text-3xl opacity-80"></i>
                     </div>
@@ -110,8 +114,8 @@
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                                 <span class="text-red-600 font-black text-lg">17h30</span>
-                                <h3 class="font-bold text-slate-800 mt-1">Accueil et regroupement</h3>
-                                <p class="text-sm text-slate-500 mt-1">Regroupement des élèves avec leurs enseignants.</p>
+                                <h3 class="font-bold text-slate-800 mt-1">Accueil des artistes</h3>
+                                <p class="text-sm text-slate-500 mt-1">Regroupement des élèves par classe pour se préparer à entrer en scène.</p>
                             </div>
                         </div>
                         <!-- Item 2 -->
@@ -132,8 +136,8 @@
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                                 <span class="text-red-600 font-black text-lg">19h00</span>
-                                <h3 class="font-bold text-slate-800 mt-1">Stands & Restauration</h3>
-                                <p class="text-sm text-slate-500 mt-1">Ouverture des animations. Régalez-vous !</p>
+                                <h3 class="font-bold text-slate-800 mt-1">Ouverture des stands & Restauration</h3>
+                                <p class="text-sm text-slate-500 mt-1">Tickets en vente à la caisse centrale.</p>
                             </div>
                         </div>
                         <!-- Item 4 -->
@@ -143,8 +147,8 @@
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                                 <span class="text-red-600 font-black text-lg">21h00</span>
-                                <h3 class="font-bold text-slate-800 mt-1">Tirage de la tombola</h3>
-                                <p class="text-sm text-slate-500 mt-1">Découvrez si vous avez gagné le gros lot !</p>
+                                <h3 class="font-bold text-slate-800 mt-1">Tirage de la 2ème chance tombola</h3>
+                                <p class="text-sm text-slate-500 mt-1">De gros lots à gagner !</p>
                             </div>
                         </div>
                         <!-- Item 5 -->
@@ -170,57 +174,51 @@
                 <div id="view-animations" class="view-content hidden p-4 animate-fade-in">
                     <h2 class="text-2xl font-black text-slate-800 mb-4 text-center">Les Animations</h2>
                     <div class="grid grid-cols-2 gap-4 pb-4">
-                        <!-- Animation 1 -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-blue-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-rocket text-3xl"></i>
+                                <i class="fa-solid fa-paw text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Structure Gonflable</h3>
-                                <p class="text-xs text-slate-500">Un château pour des sauts dans l'espace.</p>
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Zootopie</h3>
+                                <p class="text-xs text-slate-500">Structure gonflable pour des sauts au milieu des animaux.</p>
                             </div>
                         </div>
-                        <!-- Animation : Etoile de cinéma -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-amber-400 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-certificate text-3xl"></i>
+                                <i class="fa-solid fa-star text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
                                 <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Étoile de cinéma</h3>
                                 <p class="text-xs text-slate-500">Créez votre étoile pour le Walk of Fame.</p>
                             </div>
                         </div>
-                        <!-- Animation : Pêche aux canards -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-cyan-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-fish-fins text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Pêche aux canards</h3>
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Le monde de Némo</h3>
                                 <p class="text-xs text-slate-500">Attrapez les canards et gagnez un lot.</p>
                             </div>
                         </div>
-                        <!-- Animation : Course de bateau -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-indigo-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-ship text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Course de bateau</h3>
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">La Pat' Patrouille des Mers</h3>
                                 <p class="text-xs text-slate-500">Duo de choc pour une course effrénée.</p>
                             </div>
                         </div>
-                        <!-- Animation : Chamboule tout -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-red-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-cubes text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Chamboule-tout</h3>
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Les Indestructibles</h3>
                                 <p class="text-xs text-slate-500">Visez juste pour faire tomber les boîtes.</p>
                             </div>
                         </div>
-                        <!-- Animation : Jeux géants -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-slate-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-chess-board text-3xl"></i>
@@ -230,7 +228,6 @@
                                 <p class="text-xs text-slate-500">Divertissez-vous avec nos jeux XXL.</p>
                             </div>
                         </div>
-                        <!-- Animation : Photobooth -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
                             <div class="bg-pink-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-camera-retro text-3xl"></i>
@@ -238,56 +235,6 @@
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
                                 <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Photobooth</h3>
                                 <p class="text-xs text-slate-500">« Silence, on tourne ! » Gardez un souvenir.</p>
-                            </div>
-                        </div>
-                        <!-- Animation : Tombola -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer" onclick="openTombolaModal()">
-                            <div class="bg-emerald-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-ticket text-3xl"></i>
-                            </div>
-                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Tombola</h3>
-                                <p class="text-xs text-slate-500">Tentez votre chance pour gagner des lots.</p>
-                            </div>
-                        </div>
-                        <!-- Animation : Quiz cinéma -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer" onclick="openQuizModal()">
-                            <div class="bg-fuchsia-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-circle-question text-3xl"></i>
-                            </div>
-                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Quiz Cinéma</h3>
-                                <p class="text-xs text-slate-500">Adultes : testez vos connaissances et gagnez un lot.</p>
-                            </div>
-                        </div>
-                        <!-- Animation : Restauration -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
-                            <div class="bg-orange-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-hotdog text-3xl"></i>
-                            </div>
-                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Restauration</h3>
-                                <p class="text-xs text-slate-500">Hot-dogs, Pop-corn et Chips.</p>
-                            </div>
-                        </div>
-                        <!-- Animation : Spectacle -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
-                            <div class="bg-yellow-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-masks-theater text-3xl"></i>
-                            </div>
-                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Spectacle</h3>
-                                <p class="text-xs text-slate-500">Nos petites stars sur la grande scène.</p>
-                            </div>
-                        </div>
-                        <!-- Animation : Espace DJ -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
-                            <div class="bg-purple-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
-                                <i class="fa-solid fa-headphones-simple text-3xl"></i>
-                            </div>
-                            <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Espace DJ</h3>
-                                <p class="text-xs text-slate-500">Musique et lumières pour danser.</p>
                             </div>
                         </div>
                     </div>
@@ -325,7 +272,6 @@
 
                     <!-- Offres spéciales -->
                     <div class="mb-8">
-                        <!-- Offre Unique -->
                         <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-1 shadow-md transform -rotate-1 max-w-sm mx-auto">
                             <div class="bg-white border-2 border-dashed border-yellow-500 rounded-lg p-3 flex items-center justify-between">
                                 <div>
@@ -346,31 +292,33 @@
                         </div>
                         <ul class="divide-y divide-slate-100">
                             <li class="flex justify-between items-center p-3 px-4 bg-yellow-50">
-                                <div class="flex flex-col">
-                                    <span class="font-bold text-slate-800">Menu Complet</span>
-                                    <span class="text-xs text-slate-500">Hot-dog + Chips + Boisson</span>
+                                <div class="flex flex-col pr-2">
+                                    <span class="font-bold text-slate-800">Menu Complet (6€)</span>
+                                    <span class="text-xs text-slate-500">Hot-dog volaille + chips + boisson soft ou bière</span>
                                 </div>
-                                <span class="font-bold text-red-600 bg-red-100 px-3 py-1 rounded-full text-sm">12 tickets</span>
+                                <span class="font-bold text-red-600 bg-red-100 px-3 py-1 rounded-full text-sm text-center whitespace-nowrap">1 ticket menu</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <span class="font-medium text-slate-700">Pop-Corn</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Chips seul</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
+                                <span class="font-medium text-slate-700">Chips</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Hot-Dog seul</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">6 tickets</span>
+                                <div class="flex flex-col pr-2">
+                                    <span class="font-medium text-slate-700">Glace</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Push Up Haribo, Minecraft Vanille & Cacao, Cornetto Classico Vanille</span>
+                                </div>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">4 tickets</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Glace</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">4 tickets</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Boisson seule</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
+                                <div class="flex flex-col pr-2">
+                                    <span class="font-medium text-slate-700">Boisson soft</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Coca, Coca Zéro, Oasis, Ice Tea</span>
+                                </div>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">2 tickets</span>
                             </li>
                         </ul>
 
@@ -378,45 +326,42 @@
                             <i class="fa-solid fa-masks-theater mr-2 text-yellow-400"></i> Animations
                         </div>
                         <ul class="divide-y divide-slate-100">
+                            <!-- Groupe : 1 Ticket -->
                             <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
-                                <span class="font-medium text-slate-700">Structure Gonflable</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
+                                <div class="flex flex-col pr-2">
+                                    <span class="font-medium text-slate-700">Animations Classiques</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Zootopie, Le monde de Némo, Pat' Patrouille, Étoile de cinéma</span>
+                                </div>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
                             </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
-                                <span class="font-medium text-slate-700">Étoile de cinéma</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
-                                <span class="font-medium text-slate-700">Quiz Cinéma (Adultes)</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
-                                <span class="font-medium text-slate-700">Pêche aux canards</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
-                                <span class="font-medium text-slate-700">Course de bateau en duo</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">1 ticket</span>
-                            </li>
+                            <!-- Groupe : 2 Tickets -->
                             <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
                                 <span class="font-medium text-slate-700">Photobooth</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">2 tickets</span>
                             </li>
-                            <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Ticket Tombola</span>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm">2 tickets</span>
+                            <!-- Groupe : Tombola -->
+                            <li class="flex justify-between items-center p-3 px-4 cursor-pointer hover:bg-slate-100 transition-colors" onclick="openTombolaModal()">
+                                <div class="flex items-center">
+                                    <span class="font-medium text-slate-700">Ticket Tombola</span>
+                                    <i class="fa-solid fa-circle-info text-emerald-500 ml-2 text-xs"></i>
+                                </div>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">2 tickets</span>
                             </li>
+                            <!-- Groupe : Quiz -->
+                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors" onclick="openQuizModal()">
+                                <div class="flex items-center">
+                                    <span class="font-medium text-slate-700">Quiz Cinéma (Adultes)</span>
+                                    <i class="fa-solid fa-circle-info text-fuchsia-500 ml-2 text-xs"></i>
+                                </div>
+                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
+                            </li>
+                            <!-- Groupe : Gratuit -->
                             <li class="flex justify-between items-center p-3 px-4 bg-green-50/50">
-                                <span class="font-medium text-slate-700">Chamboule-tout</span>
-                                <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm">Gratuit</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-green-50/50">
-                                <span class="font-medium text-slate-700">Jeux géants en autonomie</span>
-                                <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm">Gratuit</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4 bg-green-50/50">
-                                <span class="font-medium text-slate-700">Spectacle & DJ</span>
-                                <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm">Gratuit</span>
+                                <div class="flex flex-col pr-2">
+                                    <span class="font-medium text-slate-700">Jeux en libre accès</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Les Indestructibles, Jeux géants</span>
+                                </div>
+                                <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm whitespace-nowrap">Gratuit</span>
                             </li>
                         </ul>
                     </div>
@@ -435,10 +380,9 @@
                 <div id="view-plan" class="view-content hidden p-4 animate-fade-in flex flex-col min-h-full">
                     <h2 class="text-2xl font-black text-slate-800 mb-4 text-center">Plan de la Fête</h2>
                     
-                    <!-- Carte visuelle (Lien mis à jour) -->
+                    <!-- Carte visuelle (Cliquable) -->
                     <div class="relative group cursor-pointer mb-2" onclick="openPlanModal()">
                         <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white bg-white transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
-                        <!-- Superposition avec icône loupe -->
                         <div class="absolute inset-0 bg-black/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <div class="bg-slate-900/80 text-white px-3 py-2 rounded-full backdrop-blur-sm text-sm font-bold shadow-lg">
                                 <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Agrandir
@@ -459,7 +403,7 @@
                         </ul>
                     </div>
 
-                    <!-- Crédit (Poussé en bas par mt-auto) -->
+                    <!-- Crédit -->
                     <div class="mt-auto pt-4 text-center w-full">
                         <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
                     </div>
@@ -507,46 +451,9 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="relative w-full h-full flex items-center justify-center p-4">
-            <!-- Lien mis à jour également ici -->
             <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
         </div>
         <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
-    </div>
-
-    <!-- Modal Quiz Cinéma -->
-    <div id="quiz-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeQuizModal()">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col max-h-[85vh] relative animate-fade-in">
-            <!-- En-tête -->
-            <div class="bg-fuchsia-600 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
-                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-clapperboard mr-2"></i> Le Quiz "Émojis-Ciné"</h3>
-                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeQuizModal()">&times;</button>
-            </div>
-            <!-- Contenu défilant -->
-            <div class="p-5 overflow-y-auto flex-1 no-scrollbar">
-                <p class="text-sm text-fuchsia-900 font-medium mb-6 bg-fuchsia-100 p-4 rounded-xl border border-fuchsia-200 shadow-inner text-center">
-                    🎬 <strong class="uppercase tracking-wider">Consigne :</strong><br>Retrouvez le titre du film caché derrière ces combinaisons d'émojis.
-                </p>
-                
-                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 shadow-sm">
-                    <ol class="space-y-3 text-2xl text-center text-slate-800 font-medium marker:text-fuchsia-500 marker:font-bold marker:text-lg list-decimal list-inside">
-                        <li class="pb-2 border-b border-slate-200/60">🦁 👑</li>
-                        <li class="pb-2 border-b border-slate-200/60">🧊 🚢 🌊</li>
-                        <li class="pb-2 border-b border-slate-200/60">🦖 🧬 🌴</li>
-                        <li class="pb-2 border-b border-slate-200/60">🧙‍♂️ 👓 ⚡</li>
-                        <li class="pb-2 border-b border-slate-200/60">🛸 🚲 🌕</li>
-                        <li class="pb-2 border-b border-slate-200/60">🐀 🍳 👨‍🍳</li>
-                        <li class="pb-2 border-b border-slate-200/60">🏴‍☠️ 🦜 ⚔️</li>
-                        <li class="pb-2 border-b border-slate-200/60 leading-tight">🥖 🚲 📸 <br><span class="text-xs text-fuchsia-600 font-normal italic block mt-1">(Indice : Un film français culte)</span></li>
-                        <li class="pb-2 border-b border-slate-200/60">👨‍🦽 👨‍💼 🇫🇷</li>
-                        <li class="pt-1">🚀 🪐 ⚔️</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- Pied de page -->
-            <div class="p-4 bg-slate-50 border-t border-slate-200 rounded-b-2xl shrink-0">
-                <button class="bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-fuchsia-700 hover:shadow-lg transition-all active:scale-95" onclick="closeQuizModal()">Fermer le quiz</button>
-            </div>
-        </div>
     </div>
 
     <!-- Modal Tombola -->
@@ -578,6 +485,77 @@
         </div>
     </div>
 
+    <!-- Modal Quiz Cinéma (Teasing uniquement) -->
+    <div id="quiz-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeQuizModal()">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col relative animate-fade-in">
+            <!-- En-tête -->
+            <div class="bg-fuchsia-600 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
+                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-clapperboard mr-2"></i> Quiz Cinéma</h3>
+                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeQuizModal()">&times;</button>
+            </div>
+            <!-- Contenu Teasing -->
+            <div class="p-6 flex-1 text-center">
+                <div class="text-6xl mb-4 animate-bounce">🍿🎬</div>
+                <p class="text-slate-800 font-black text-xl mb-3">Révisez vos classiques !</p>
+                <p class="text-slate-600 font-medium leading-relaxed bg-fuchsia-50 p-4 rounded-xl border border-fuchsia-100">
+                    Préparez-vous à tester vos connaissances afin de pouvoir gagner <strong class="text-fuchsia-600">un lot spécial parents</strong> le jour de la fête.
+                </p>
+            </div>
+            <!-- Pied de page -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 rounded-b-2xl shrink-0">
+                <button class="bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-fuchsia-700 hover:shadow-lg transition-all active:scale-95" onclick="closeQuizModal()">C'est noté !</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Avis (Formulaire) -->
+    <div id="avis-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeAvisModal()">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col relative animate-fade-in max-h-[90vh]">
+            <!-- En-tête -->
+            <div class="bg-emerald-500 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
+                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-comment-dots mr-2"></i> Votre avis compte !</h3>
+                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeAvisModal()">&times;</button>
+            </div>
+            
+            <!-- Contenu Formulaire -->
+            <div class="p-6 overflow-y-auto flex-1 no-scrollbar" id="avis-form-content">
+                <p class="text-sm text-slate-600 mb-4 text-center">Ce formulaire est **totalement anonyme**. Vos retours nous aident à améliorer les prochaines fêtes de l'école !</p>
+                
+                <!-- Action vers FormSubmit (remplacez par l'email de l'APES) -->
+                <form id="avis-form" class="space-y-4">
+                    <!-- Configuration FormSubmit invisible -->
+                    <input type="hidden" name="_subject" value="Nouvel avis sur la fête de l'école !">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-2" for="adore">Ce que vous avez adoré 💚</label>
+                        <textarea name="Ce que j'ai adoré" id="adore" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'ambiance, un stand en particulier..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-2" for="ameliorer">Ce qu'on peut améliorer 🛠️</label>
+                        <textarea name="Ce qu'on peut améliorer" id="ameliorer" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'attente, une nouvelle idée de jeu..."></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-avis-btn" class="mt-2 bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95 flex justify-center items-center">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Envoyer mon avis
+                    </button>
+                </form>
+            </div>
+
+            <!-- Message de succès (Caché par défaut) -->
+            <div id="avis-success-message" class="hidden p-8 text-center flex-1 flex flex-col justify-center items-center">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center text-3xl mb-4">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-xl font-black text-slate-800 mb-2">Merci beaucoup !</h3>
+                <p class="text-slate-600 mb-6">Votre avis a bien été envoyé de manière anonyme à l'APES.</p>
+                <button class="bg-slate-200 text-slate-700 font-bold py-2 px-6 rounded-xl w-full hover:bg-slate-300 transition-all" onclick="closeAvisModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Script de l'application -->
     <script>
         // Gestion de la navigation entre les vues
@@ -591,7 +569,6 @@
             const activeView = document.getElementById('view-' + tabId);
             if (activeView) {
                 activeView.classList.remove('hidden');
-                // Pour le plan et l'accueil, on utilise flex
                 if (tabId === 'plan' || tabId === 'accueil') {
                     activeView.classList.add('flex');
                 }
@@ -645,23 +622,6 @@
             }
         }
 
-        // Gestion du Quiz Cinéma
-        function openQuizModal() {
-            const modal = document.getElementById('quiz-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex', 'animate-fade-in');
-            }
-        }
-
-        function closeQuizModal() {
-            const modal = document.getElementById('quiz-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex', 'animate-fade-in');
-            }
-        }
-
         // Gestion de la Tombola
         function openTombolaModal() {
             const modal = document.getElementById('tombola-modal');
@@ -679,11 +639,88 @@
             }
         }
 
-        // Attendre que le DOM soit complètement chargé avant d'exécuter le script
+        // Gestion du Quiz Cinéma
+        function openQuizModal() {
+            const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+            }
+        }
+
+        function closeQuizModal() {
+            const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        // Gestion du formulaire d'Avis
+        function openAvisModal() {
+            const modal = document.getElementById('avis-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+                // Reset form state if opened again
+                document.getElementById('avis-form-content').classList.remove('hidden');
+                document.getElementById('avis-success-message').classList.add('hidden');
+                document.getElementById('avis-form').reset();
+            }
+        }
+
+        function closeAvisModal() {
+            const modal = document.getElementById('avis-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        // Envoi AJAX du formulaire via FormSubmit
+        document.getElementById('avis-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-avis-btn');
+            const originalText = btn.innerHTML;
+            
+            // Animation de chargement
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Envoi...';
+            btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            const formData = new FormData(this);
+
+            fetch('https://formsubmit.co/ajax/apes.solers77@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Succès : Afficher le message de remerciement
+                document.getElementById('avis-form-content').classList.add('hidden');
+                document.getElementById('avis-success-message').classList.remove('hidden');
+                
+                // Restaurer le bouton (caché mais propre)
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            })
+            .catch(error => {
+                // Erreur
+                alert("Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            });
+        });
+
+        // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             // Génération des lumières du chapiteau
             const lightsContainer = document.getElementById('lights-container');
-            // Vérification que le conteneur existe pour éviter l'erreur
             if (lightsContainer) {
                 for (let i = 0; i < 15; i++) {
                     const light = document.createElement('div');
@@ -694,7 +731,11 @@
                 }
             }
 
+            // Ouverture de l'accueil au lancement
             switchTab('accueil');
+            
+            // Permet d'ouvrir les pop-ups (Quiz et Tombola) via un clic depuis la vue Tarifs si on veut
+            // (Déjà géré en dur dans l'attribut onclick des éléments <li>)
         });
     </script>
 </body>
