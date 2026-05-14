@@ -501,6 +501,24 @@
                 <!-- Espace de sécurité pour les iPhones récents -->
                 <div class="h-4 sm:h-2"></div>
             </nav>
+
+            <!-- Prompt "Ajouter à l'écran d'accueil" (A2HS) -->
+            <div id="a2hs-prompt" class="absolute bottom-[88px] left-4 right-4 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.15)] border border-slate-200 transform translate-y-8 opacity-0 pointer-events-none transition-all duration-700 z-40 flex items-start gap-3">
+                <div class="bg-yellow-400 text-slate-900 w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-inner">
+                    <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-slate-800 text-sm flex justify-between items-start">
+                        Installer l'application
+                        <button onclick="dismissA2HS()" class="text-slate-400 hover:text-slate-700 p-2 -mt-2 -mr-2 transition-colors">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </h4>
+                    <p id="a2hs-instructions" class="text-xs text-slate-600 leading-tight mt-0.5">
+                        <!-- Le texte sera injecté via Javascript selon l'OS -->
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -794,9 +812,39 @@
             // Ouverture de l'accueil au lancement
             switchTab('accueil');
             
-            // Permet d'ouvrir les pop-ups (Quiz et Tombola) via un clic depuis la vue Tarifs si on veut
-            // (Déjà géré en dur dans l'attribut onclick des éléments <li>)
+            // --- LOGIQUE AJOUT ÉCRAN D'ACCUEIL (A2HS) ---
+            setTimeout(() => {
+                // Vérifier si déjà en mode app (standalone)
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+                // Vérifier si l'utilisateur a déjà fermé le popup
+                const isDismissed = localStorage.getItem('a2hs-dismissed') === 'true';
+                
+                if (!isStandalone && !isDismissed) {
+                    const userAgent = window.navigator.userAgent.toLowerCase();
+                    const isIOS = /iphone|ipad|ipod/.test(userAgent);
+                    const isAndroid = /android/.test(userAgent);
+                    
+                    const instructionsEl = document.getElementById('a2hs-instructions');
+                    const promptEl = document.getElementById('a2hs-prompt');
+
+                    if (isIOS) {
+                        instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-arrow-up-from-bracket mx-1 text-blue-500"></i> ci-dessous puis sur <strong>Sur l\'écran d\'accueil</strong>.';
+                        promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                    } else if (isAndroid) {
+                        instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-ellipsis-vertical mx-1"></i> dans votre navigateur puis sur <strong>Ajouter à l\'écran d\'accueil</strong>.';
+                        promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                    }
+                }
+            }, 3000); // Apparaît au bout de 3 secondes
         });
+
+        // Fonction pour fermer définitivement le popup d'installation
+        function dismissA2HS() {
+            const promptEl = document.getElementById('a2hs-prompt');
+            promptEl.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+            // Mémorise le choix dans le navigateur pour ne plus jamais l'afficher
+            localStorage.setItem('a2hs-dismissed', 'true');
+        }
     </script>
 </body>
 </html>
