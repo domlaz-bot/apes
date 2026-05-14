@@ -570,8 +570,8 @@
             <div class="p-6 overflow-y-auto flex-1 no-scrollbar" id="avis-form-content">
                 <p class="text-sm text-slate-600 mb-4 text-center">Ce formulaire est **totalement anonyme**. Vos retours nous aident à améliorer les prochaines fêtes de l'école !</p>
                 
-                <!-- Action vers FormSubmit (remplacez par l'email de l'APES) -->
-                <form id="avis-form" class="space-y-4">
+                <!-- Action vers FormSubmit (classique avec ouverture d'onglet) -->
+                <form action="https://formsubmit.co/apes.solers77@gmail.com" method="POST" target="_blank" id="avis-form" class="space-y-4">
                     <!-- Configuration FormSubmit invisible -->
                     <input type="hidden" name="_subject" value="Nouvel avis sur la fête de l'école !">
                     <input type="hidden" name="_template" value="box">
@@ -579,12 +579,12 @@
                     
                     <div>
                         <label class="block text-slate-700 font-bold mb-2" for="adore">Ce que vous avez adoré 💚</label>
-                        <textarea name="Ce que j'ai adoré" id="adore" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'ambiance, un stand en particulier..."></textarea>
+                        <textarea name="Ce que j'ai adoré" id="adore" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'ambiance, un stand en particulier..." required></textarea>
                     </div>
                     
                     <div>
                         <label class="block text-slate-700 font-bold mb-2" for="ameliorer">Ce qu'on peut améliorer 🛠️</label>
-                        <textarea name="Ce qu'on peut améliorer" id="ameliorer" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'attente, une nouvelle idée de jeu..."></textarea>
+                        <textarea name="Ce qu'on peut améliorer" id="ameliorer" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'attente, une nouvelle idée de jeu..." required></textarea>
                     </div>
                     
                     <button type="submit" id="submit-avis-btn" class="mt-2 bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95 flex justify-center items-center">
@@ -726,47 +726,20 @@
             }
         }
 
-        // Envoi AJAX du formulaire via FormSubmit
+        // Envoi classique du formulaire (Compatible avec les fichiers locaux)
         document.getElementById('avis-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submit-avis-btn');
-            const originalText = btn.innerHTML;
+            // Le navigateur va ouvrir la page de confirmation FormSubmit dans un nouvel onglet,
+            // garantissant la réception de l'e-mail.
             
-            // Animation de chargement
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Envoi...';
-            btn.disabled = true;
-            btn.classList.add('opacity-75', 'cursor-not-allowed');
-
-            const formData = new FormData(this);
-
-            fetch('https://formsubmit.co/ajax/apes.solers77@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Succès : Afficher le message de remerciement
+            // On affiche le message de succès dans l'application après un petit délai
+            setTimeout(() => {
                 document.getElementById('avis-form-content').classList.add('hidden');
                 document.getElementById('avis-success-message').classList.remove('hidden');
-                
-                // Restaurer le bouton (caché mais propre)
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.classList.remove('opacity-75', 'cursor-not-allowed');
-            })
-            .catch(error => {
-                // Erreur
-                alert("Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.classList.remove('opacity-75', 'cursor-not-allowed');
-            });
+                this.reset();
+            }, 1000);
         });
 
-        // Initialisation
+        // Attendre que le DOM soit complètement chargé avant d'exécuter le script
         document.addEventListener('DOMContentLoaded', () => {
             // Génération des lumières du chapiteau
             const lightsContainer = document.getElementById('lights-container');
