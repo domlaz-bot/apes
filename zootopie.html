@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta cruciale pour empêcher le zoom sur mobile lors de clics rapides -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zootopie - Gestion Rapide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8fafc;
+            /* Empêche la sélection de texte et les gestes parasites sur mobile */
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        /* Styles spécifiques pour les cases de la grille */
+        .slot {
+            aspect-ratio: 1 / 1;
+            transition: all 0.15s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .slot:active {
+            transform: scale(0.95);
+        }
+
+        /* États des cases */
+        .slot-empty {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            color: #94a3b8;
+        }
+        
+        .slot-running {
+            background-color: #dcfce7;
+            border: 2px solid #22c55e;
+            color: #166534;
+            box-shadow: 0 4px 6px -1px rgba(34, 197, 94, 0.2);
+        }
+
+        .slot-warning {
+            background-color: #ffedd5;
+            border: 2px solid #f97316;
+            color: #9a3412;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { background-color: #fee2e2; border-color: #ef4444; transform: scale(1); }
+            50% { background-color: #fca5a5; border-color: #dc2626; transform: scale(1.02); }
+        }
+
+        .slot-expired {
+            background-color: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            animation: pulse-red 1.5s infinite;
+            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Cacher scrollbar */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex flex-col text-slate-800 overflow-hidden">
+
+    <header class="bg-white shadow-sm px-4 py-3 flex justify-between items-center z-10 shrink-0 border-b-2 border-green-500">
+        <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+                <i data-lucide="tent" class="w-5 h-5 text-green-600"></i>
+                <h1 class="text-xl font-black text-green-600 tracking-tight leading-none">Zootopie</h1>
+            </div>
+            
+            <!-- Réglage du temps global -->
+            <div class="flex items-center gap-2 mt-2">
+                <button onclick="adjustGlobalDuration(-1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-700 rounded-lg active:bg-slate-200">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                </button>
+                <div class="font-bold text-slate-700 text-sm">
+                    <span id="globalDurationDisplay">5</span> min
+                </div>
+                <button onclick="adjustGlobalDuration(1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-700 rounded-lg active:bg-slate-200">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Compteur Total -->
+        <div class="flex flex-col items-end justify-center">
+            <div class="text-3xl font-black text-blue-600 leading-none" id="totalCountDisplay">
+                0<span class="text-lg text-slate-300 font-bold">/20</span>
+            </div>
+            <button onclick="clearAll()" id="clearAllBtn" class="hidden mt-1 text-[10px] font-bold uppercase tracking-wider text-red-500 bg-red-50 px-2 py-1 rounded">
+                Tout vider
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-3 relative flex flex-col">
+        <div class="text-center mb-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+            Touchez une case vide pour faire entrer un enfant
+        </div>
+        
+        <!-- Grille CSS pour les 20 places (4 colonnes x 5 lignes sur mobile) -->
+        <div id="gridContainer" class="grid grid-cols-4 sm:grid-cols-5 gap-2 flex-1 pb-4">
+            <!-- Les 20 cases seront générées ici par JS -->
+        </div>
+    </main>
+
+    <div id="customModal" class="fixed inset-0 bg-slate-900/60 hidden flex items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-200">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-[300px] p-5 transform scale-95 transition-transform duration-200" id="modalContent">
+            <h3 class="text-lg font-black text-slate-800 mb-2" id="modalTitle">Titre</h3>
+            <p class="text-slate-600 mb-6 text-sm" id="modalText">Message</p>
+            <div class="flex gap-2">
+                <button id="modalCancelBtn" onclick="closeModal()" class="flex-1 py-3 bg-slate-100 text-slate-700 font-bold rounded-xl active:bg-slate-200">
+                    Annuler
+                </button>
+                <button id="modalConfirmBtn" onclick="executeModalAction()" class="flex-1 py-3 bg-blue-500 text-white font-bold rounded-xl active:scale-[0.98]">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const MAX_CHILDREN = 20;
+        let globalDuration = 5; // Durée par défaut en minutes
+        
+        // État des 20 places (null = vide, objet = occupé)
+        let slots = Array(MAX_CHILDREN).fill(null);
+        let timerInterval = null;
+        let modalCallback = null;
+
+        // Elements DOM
+        const gridContainer = document.getElementById('gridContainer');
+        const totalCountDisplay = document.getElementById('totalCountDisplay');
+        const globalDurationDisplay = document.getElementById('globalDurationDisplay');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const modal = document.getElementById('customModal');
+
+        // Initialisation de la grille DOM
+        function initGrid() {
+            gridContainer.innerHTML = '';
+            for (let i = 0; i < MAX_CHILDREN; i++) {
+                const slotEl = document.createElement('div');
+                slotEl.id = `slot-${i}`;
+                slotEl.className = 'slot slot-empty rounded-2xl flex flex-col items-center justify-center';
+                slotEl.onclick = () => handleSlotClick(i);
+                
+                // Contenu de la case vide par défaut
+                slotEl.innerHTML = `
+                    <i data-lucide="plus" class="w-8 h-8 opacity-50 mb-1"></i>
+                    <span class="text-[10px] font-bold opacity-50">Place ${i+1}</span>
+                `;
+                
+                gridContainer.appendChild(slotEl);
+            }
+            lucide.createIcons();
+            
+            // Démarrer la boucle de rafraîchissement
+            timerInterval = setInterval(updateAllSlots, 1000);
+        }
+
+        // Action quand on touche une case
+        function handleSlotClick(index) {
+            const slot = slots[index];
+
+            if (!slot) {
+                // Place vide -> On fait entrer l'enfant (Démarrage chrono)
+                const durationSeconds = globalDuration * 60;
+                slots[index] = {
+                    endTime: Date.now() + (durationSeconds * 1000),
+                    isTimeUp: false
+                };
+                updateUI();
+                updateAllSlots(); // Forcer une maj immédiate
+            } else if (slot.isTimeUp) {
+                // Temps écoulé (Rouge) -> On vide la place sans demander
+                slots[index] = null;
+                updateUI();
+                updateAllSlots();
+            } else {
+                // Enfant dedans (Vert) -> On demande confirmation pour le faire sortir plus tôt
+                showModal("Faire sortir ?", `La place ${index + 1} n'a pas terminé son temps. Faire sortir l'enfant ?`, () => {
+                    slots[index] = null;
+                    updateUI();
+                    updateAllSlots();
+                }, false);
+            }
+        }
+
+        // Mise à jour visuelle des cases (appelée chaque seconde)
+        function updateAllSlots() {
+            const now = Date.now();
+
+            for (let i = 0; i < MAX_CHILDREN; i++) {
+                const slotData = slots[i];
+                const slotEl = document.getElementById(`slot-${i}`);
+                
+                if (!slotData) {
+                    // S'assurer que le style est réinitialisé si vide
+                    if (slotEl.className !== 'slot slot-empty rounded-2xl flex flex-col items-center justify-center') {
+                        slotEl.className = 'slot slot-empty rounded-2xl flex flex-col items-center justify-center';
+                        slotEl.innerHTML = `
+                            <i data-lucide="plus" class="w-8 h-8 opacity-50 mb-1"></i>
+                            <span class="text-[10px] font-bold opacity-50">Place ${i+1}</span>
+                        `;
+                        lucide.createIcons({root: slotEl});
+                    }
+                    continue;
+                }
+
+                // Calcul du temps
+                const remainingMs = slotData.endTime - now;
+                const remainingSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+                
+                // Détermination de l'état
+                let newState = 'running';
+                if (remainingSeconds <= 0) {
+                    newState = 'expired';
+                    slotData.isTimeUp = true;
+                } else if (remainingSeconds <= 60) {
+                    newState = 'warning';
+                }
+
+                // Formatage de l'heure
+                const timeStr = formatTime(remainingSeconds);
+
+                // Application du bon style
+                let newClass = 'slot rounded-2xl flex flex-col items-center justify-center ';
+                if (newState === 'expired') {
+                    newClass += 'slot-expired';
+                    slotEl.innerHTML = `
+                        <i data-lucide="bell-ring" class="w-6 h-6 mb-1"></i>
+                        <span class="text-sm font-black tracking-tighter">FINI</span>
+                    `;
+                } else {
+                    if (newState === 'warning') newClass += 'slot-warning';
+                    if (newState === 'running') newClass += 'slot-running';
+                    
+                    slotEl.innerHTML = `
+                        <span class="text-xl font-black font-mono tracking-tighter leading-none">${timeStr}</span>
+                        <span class="text-[9px] font-bold opacity-70 mt-1">Place ${i+1}</span>
+                    `;
+                }
+
+                // On évite de réécrire le DOM si rien n'a changé visuellement (sauf le timer)
+                if (slotEl.className !== newClass) {
+                    slotEl.className = newClass;
+                    if (newState === 'expired') lucide.createIcons({root: slotEl});
+                } else if (newState !== 'expired') {
+                    // Update juste le texte du chrono pour la perf
+                    const timeSpan = slotEl.querySelector('span.text-xl');
+                    if(timeSpan && timeSpan.textContent !== timeStr) {
+                         timeSpan.textContent = timeStr;
+                    }
+                }
+            }
+        }
+
+        // Outils divers
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function adjustGlobalDuration(amount) {
+            let newValue = globalDuration + amount;
+            if (newValue >= 1 && newValue <= 30) {
+                globalDuration = newValue;
+                globalDurationDisplay.textContent = globalDuration;
+            }
+        }
+
+        // Mise à jour du compteur global
+        function updateUI() {
+            const activeCount = slots.filter(s => s !== null).length;
+            totalCountDisplay.innerHTML = `${activeCount}<span class="text-lg text-slate-300 font-bold">/20</span>`;
+            
+            if (activeCount >= MAX_CHILDREN) {
+                totalCountDisplay.classList.replace('text-blue-600', 'text-red-500');
+            } else {
+                totalCountDisplay.classList.replace('text-red-500', 'text-blue-600');
+            }
+
+            clearAllBtn.style.display = activeCount > 0 ? 'block' : 'none';
+        }
+
+        // Vider tout d'un coup
+        function clearAll() {
+            showModal("Tout vider ?", "Vider les 20 places ?", () => {
+                slots = Array(MAX_CHILDREN).fill(null);
+                updateUI();
+                updateAllSlots();
+            }, true);
+        }
+
+        // Gestion du Modal
+        function showModal(title, text, onConfirm, isDestructive = false) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalText').textContent = text;
+            
+            const confirmBtn = document.getElementById('modalConfirmBtn');
+            if (isDestructive) {
+                confirmBtn.className = "flex-1 py-3 bg-red-500 text-white font-bold rounded-xl active:scale-[0.98]";
+            } else {
+                confirmBtn.className = "flex-1 py-3 bg-blue-500 text-white font-bold rounded-xl active:scale-[0.98]";
+            }
+
+            modalCallback = onConfirm;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                document.getElementById('modalContent').classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            document.getElementById('modalContent').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalCallback = null;
+            }, 200);
+        }
+
+        function executeModalAction() {
+            if (modalCallback) modalCallback();
+            closeModal();
+        }
+
+        // Lancement au chargement
+        initGrid();
+        updateUI();
+
+    </script>
+</body>
+</html>
