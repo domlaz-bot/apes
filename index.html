@@ -19,6 +19,7 @@
                 extend: {
                     animation: {
                         'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'spin-slow': 'spin 3s linear infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -82,24 +83,17 @@
                 
                 <!-- VUE : ACCUEIL -->
                 <div id="view-accueil" class="view-content hidden p-4 animate-fade-in flex flex-col items-center">
-                    <!-- L'affiche de l'événement -->
-                    <img src="https://domlaz-bot.github.io/apes/affiche.jpeg" alt="Affiche Fête de l'École" class="max-h-[42vh] w-auto max-w-[75%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
+                    <!-- L'affiche de l'événement (Lien mis à jour & taille optimisée) -->
+                    <img src="https://domlaz-bot.github.io/apes/affiche.jpeg" alt="Affiche Fête de l'École" class="max-h-[42vh] w-auto max-w-[85%] object-contain rounded-xl shadow-lg border-4 border-yellow-400 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x850/1e293b/facc15?text=Affiche+Non+Trouvee';">
                     
                     <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-200 text-center w-full">
                         <h2 class="font-black text-lg text-slate-800 mb-1">Bienvenue à la fête !</h2>
-                        <p class="text-xs text-slate-600 leading-tight">L'APES et l'équipe pédagogique vous souhaitent une excellente soirée.</p>
+                        <p class="text-xs text-slate-600 leading-tight">L'APES et l'équipe pédagogique sont heureux de vous accueillir.</p>
                         
                         <!-- Nouveau bouton pour donner son avis -->
                         <button onclick="openAvisModal()" class="mt-3 bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all w-full flex items-center justify-center active:scale-95">
                             <i class="fa-solid fa-comment-dots text-lg mr-2"></i> Donnez votre avis !
                         </button>
-                    </div>
-
-                    <!-- Avertissement de responsabilité -->
-                    <div class="mt-4 bg-red-50 border border-red-100 rounded-xl p-2.5 w-full text-center shadow-sm">
-                        <p class="text-xs text-red-800 font-medium">
-                            <i class="fa-solid fa-triangle-exclamation text-red-500 mr-1"></i> Les enfants restent sous la responsabilité des parents (comportement et respect des lieux).
-                        </p>
                     </div>
 
                     <!-- Crédit -->
@@ -208,7 +202,8 @@
 
                     <div class="grid grid-cols-2 gap-4 pb-4">
                         <!-- Animation 1 : Zootopie (Cliquable avec info) -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-blue-400 transition-all" onclick="openZootopieModal()">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-blue-400 transition-all" onclick="openZootopieModal()">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">1 Ticket</div>
                             <div class="bg-blue-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-paw text-3xl"></i>
                             </div>
@@ -218,17 +213,19 @@
                             </div>
                         </div>
                         <!-- Animation : Hollywood Tattoos -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">1 Ticket</div>
                             <div class="bg-teal-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-paintbrush text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
                                 <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Hollywood Tattoos</h3>
-                                <p class="text-xs text-slate-500">Un tatouage éphémère pour briller comme une star.</p>
+                                <p class="text-xs text-slate-500">Stand de tatouages éphémères.</p>
                             </div>
                         </div>
                         <!-- Animation 3 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">1 Ticket</div>
                             <div class="bg-cyan-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-fish-fins text-3xl"></i>
                             </div>
@@ -238,17 +235,19 @@
                             </div>
                         </div>
                         <!-- Animation 4 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">1 Ticket</div>
                             <div class="bg-indigo-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-ship text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
-                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">La Pat' Patrouille des Mers</h3>
+                                <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Pat' Patrouille</h3>
                                 <p class="text-xs text-slate-500">Duo de choc pour une course effrénée.</p>
                             </div>
                         </div>
                         <!-- Animation 5 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-green-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10 uppercase">Gratuit</div>
                             <div class="bg-red-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-cubes text-3xl"></i>
                             </div>
@@ -258,7 +257,8 @@
                             </div>
                         </div>
                         <!-- Animation 6 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-green-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10 uppercase">Gratuit</div>
                             <div class="bg-slate-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-chess-board text-3xl"></i>
                             </div>
@@ -268,7 +268,8 @@
                             </div>
                         </div>
                         <!-- Animation 7 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">2 Tickets</div>
                             <div class="bg-pink-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-camera-retro text-3xl"></i>
                             </div>
@@ -278,7 +279,8 @@
                             </div>
                         </div>
                         <!-- Animation 8 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-emerald-400 transition-all" onclick="openTombolaModal()">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-emerald-400 transition-all" onclick="openTombolaModal()">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">4 Tickets</div>
                             <div class="bg-emerald-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-ticket text-3xl"></i>
                             </div>
@@ -288,7 +290,8 @@
                             </div>
                         </div>
                         <!-- Animation 9 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-fuchsia-400 transition-all" onclick="openQuizModal()">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group cursor-pointer ring-2 ring-transparent hover:ring-fuchsia-400 transition-all" onclick="openQuizModal()">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-green-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10 uppercase">Gratuit</div>
                             <div class="bg-fuchsia-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-circle-question text-3xl"></i>
                             </div>
@@ -298,17 +301,19 @@
                             </div>
                         </div>
                         <!-- Animation 10 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10">Dès 1 Ticket</div>
                             <div class="bg-orange-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-hotdog text-3xl"></i>
                             </div>
                             <div class="p-3 text-center flex-1 flex flex-col justify-center">
                                 <h3 class="font-bold text-slate-800 text-sm mb-1 leading-tight">Le Ciné-Snack</h3>
-                                <p class="text-xs text-slate-500">Hot-dogs, Pop-corn et Chips.</p>
+                                <p class="text-xs text-slate-500">Restauration : Hot-dogs, Pop-corn et Chips.</p>
                             </div>
                         </div>
                         <!-- Animation 11 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-green-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10 uppercase">Gratuit</div>
                             <div class="bg-yellow-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-masks-theater text-3xl"></i>
                             </div>
@@ -318,7 +323,8 @@
                             </div>
                         </div>
                         <!-- Animation 12 -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                        <div class="relative bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm text-green-600 text-[10px] font-black px-2 py-1 rounded-md shadow-sm z-10 uppercase">Gratuit</div>
                             <div class="bg-purple-500 text-white p-6 flex justify-center items-center transition-transform duration-300 group-hover:scale-105">
                                 <i class="fa-solid fa-headphones-simple text-3xl"></i>
                             </div>
@@ -362,6 +368,7 @@
 
                     <!-- Offres spéciales -->
                     <div class="mb-8">
+                        <!-- Offre Unique -->
                         <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-1 shadow-md transform -rotate-1 max-w-sm mx-auto">
                             <div class="bg-white border-2 border-dashed border-yellow-500 rounded-lg p-3 flex items-center justify-between">
                                 <div>
@@ -396,27 +403,20 @@
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
-                                <span class="font-medium text-slate-700">Chips</span>
+                                <span class="font-medium text-slate-700">Chips seul</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">1 ticket</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <div class="flex flex-col pr-2">
-                                    <span class="font-medium text-slate-700">Glace</span>
-                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Push Up Haribo, Minecraft Vanille & Cacao, Cornetto Classico Vanille</span>
-                                </div>
-                                <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">4 tickets</span>
-                            </li>
-                            <li class="flex justify-between items-center p-3 px-4">
-                                <div class="flex flex-col pr-2">
-                                    <span class="font-medium text-slate-700">Boisson soft</span>
+                                    <span class="font-medium text-slate-700">Boisson soft 33cl</span>
                                     <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Coca, Coca Zéro, Oasis, Ice Tea</span>
                                 </div>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">3 tickets</span>
                             </li>
                             <li class="flex justify-between items-center p-3 px-4">
                                 <div class="flex flex-col pr-2">
-                                    <span class="font-medium text-slate-700">Bière</span>
-                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">À consommer avec modération</span>
+                                    <span class="font-medium text-slate-700">Bière pression</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Blonde ou pêche au verre. À consommer avec modération</span>
                                 </div>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">4 tickets</span>
                             </li>
@@ -446,19 +446,16 @@
                                 <span class="font-medium text-slate-700">Photobooth</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">2 tickets</span>
                             </li>
-                            <!-- Groupe : Tombola -->
-                            <li class="flex justify-between items-center p-3 px-4 cursor-pointer hover:bg-slate-100 transition-colors" onclick="openTombolaModal()">
-                                <div class="flex items-center">
-                                    <span class="font-medium text-slate-700">Ticket Tombola</span>
-                                    <i class="fa-solid fa-circle-info text-emerald-500 ml-2 text-xs"></i>
-                                </div>
+                            <!-- Groupe : 4 Tickets -->
+                            <li class="flex justify-between items-center p-3 px-4 bg-slate-50">
+                                <span class="font-medium text-slate-700">Ticket Tombola</span>
                                 <span class="font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full text-sm whitespace-nowrap">4 tickets</span>
                             </li>
-                            <!-- Groupe : Gratuit -->
+                            <!-- Groupe : Gratuits -->
                             <li class="flex justify-between items-center p-3 px-4 bg-green-50/50">
                                 <div class="flex flex-col pr-2">
-                                    <span class="font-medium text-slate-700">Jeux en libre accès</span>
-                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Les Indestructibles, Jeux géants</span>
+                                    <span class="font-medium text-slate-700">Animations Gratuites</span>
+                                    <span class="text-[10px] leading-tight text-slate-500 mt-0.5">Les Indestructibles, Jeux géants en autonomie</span>
                                 </div>
                                 <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm whitespace-nowrap">Gratuit</span>
                             </li>
@@ -482,6 +479,7 @@
                     <!-- Carte visuelle (Cliquable) -->
                     <div class="relative group cursor-pointer mb-2" onclick="openPlanModal()">
                         <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête" class="w-full rounded-xl shadow-lg border-4 border-white bg-white transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/facc15?text=Plan+Non+Trouve';">
+                        <!-- Superposition avec icône loupe -->
                         <div class="absolute inset-0 bg-black/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <div class="bg-slate-900/80 text-white px-3 py-2 rounded-full backdrop-blur-sm text-sm font-bold shadow-lg">
                                 <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Agrandir
@@ -503,7 +501,7 @@
                         </ul>
                     </div>
 
-                    <!-- Crédit -->
+                    <!-- Crédit (Poussé en bas par mt-auto) -->
                     <div class="mt-auto pt-4 text-center w-full">
                         <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
                     </div>
@@ -572,6 +570,51 @@
             <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
         </div>
         <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
+    </div>
+
+    <!-- Modal Avis (Formulaire Web3Forms sans redirection) -->
+    <div id="avis-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeAvisModal()">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col relative animate-fade-in overflow-hidden">
+            <!-- En-tête -->
+            <div class="bg-emerald-500 text-white p-4 flex justify-between items-center shrink-0">
+                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-comment-dots mr-2"></i> Votre avis compte !</h3>
+                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeAvisModal()">&times;</button>
+            </div>
+            <!-- Contenu (Formulaire) -->
+            <div class="p-5 flex-1 relative">
+                
+                <!-- Zone de chargement / Succès (cachée par défaut) -->
+                <div id="form-result" class="absolute inset-0 bg-white/95 z-10 hidden flex-col items-center justify-center p-6 text-center">
+                    <div id="form-spinner" class="text-emerald-500 text-4xl animate-spin-slow mb-4"><i class="fa-solid fa-circle-notch"></i></div>
+                    <div id="form-success-icon" class="text-emerald-500 text-5xl mb-4 hidden"><i class="fa-solid fa-circle-check"></i></div>
+                    <h4 id="form-status-title" class="font-bold text-slate-800 text-lg mb-2">Envoi en cours...</h4>
+                    <p id="form-status-msg" class="text-sm text-slate-600 mb-6">Merci de patienter.</p>
+                    <button id="form-close-btn" class="hidden bg-emerald-500 text-white font-bold py-2 px-6 rounded-xl shadow-md hover:bg-emerald-600 w-full" onclick="closeAvisModal()">Fermer</button>
+                </div>
+
+                <p class="text-slate-600 text-sm mb-4">Aidez-nous à améliorer les prochaines éditions en nous donnant votre avis de manière 100% anonyme.</p>
+                
+                <form id="avis-form" onsubmit="submitForm(event)">
+                    <!-- Clé d'accès Web3Forms -->
+                    <input type="hidden" name="access_key" value="2ba9a705-bccf-4ae9-b978-8b57f93e5173">
+                    <input type="hidden" name="subject" value="Nouvel avis sur la Fête de l'École !">
+                    
+                    <div class="mb-4">
+                        <label class="block text-slate-700 font-bold mb-2 text-sm" for="adore"><i class="fa-solid fa-heart text-red-500 mr-1"></i> Ce que vous avez adoré :</label>
+                        <textarea name="adore" id="adore" rows="3" class="w-full px-3 py-2 text-slate-700 border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 resize-none" placeholder="Ex: L'ambiance cinéma, le stand de tombola..." required></textarea>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <label class="block text-slate-700 font-bold mb-2 text-sm" for="ameliorer"><i class="fa-solid fa-lightbulb text-yellow-500 mr-1"></i> Ce que l'on pourrait améliorer :</label>
+                        <textarea name="ameliorer" id="ameliorer" rows="3" class="w-full px-3 py-2 text-slate-700 border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 resize-none" placeholder="Ex: Plus de tables pour manger, une file d'attente plus rapide..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="bg-slate-900 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-slate-800 hover:shadow-lg transition-all active:scale-95 flex justify-center items-center">
+                        <i class="fa-regular fa-paper-plane mr-2"></i> Envoyer mon avis
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Modal Zootopie (Règles) -->
@@ -666,55 +709,6 @@
         </div>
     </div>
 
-    <!-- Modal Avis (Formulaire) -->
-    <div id="avis-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex-col items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target === this) closeAvisModal()">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col relative animate-fade-in max-h-[90vh]">
-            <!-- En-tête -->
-            <div class="bg-emerald-500 text-white p-4 rounded-t-2xl flex justify-between items-center shrink-0">
-                <h3 class="font-black text-xl flex items-center"><i class="fa-solid fa-comment-dots mr-2"></i> Votre avis compte !</h3>
-                <button class="text-white/80 hover:text-white text-3xl leading-none" onclick="closeAvisModal()">&times;</button>
-            </div>
-            
-            <!-- Contenu Formulaire -->
-            <div class="p-6 overflow-y-auto flex-1 no-scrollbar" id="avis-form-content">
-                <p class="text-sm text-slate-600 mb-4 text-center">Ce formulaire est **totalement anonyme**. Vos retours nous aident à améliorer les prochaines fêtes de l'école !</p>
-                
-                <!-- Formulaire utilisant Web3Forms -->
-                <form id="avis-form" class="space-y-4">
-                    <!-- IMPORTANT : Remplacez VOTRE_CLE_ICI par la clé reçue par email -->
-                    <input type="hidden" name="access_key" value="2ba9a705-bccf-4ae9-b978-8b57f93e5173">
-                    <input type="hidden" name="subject" value="Nouvel avis sur la fête de l'école !">
-                    <input type="hidden" name="from_name" value="Avis Fête de l'École">
-                    
-                    <div>
-                        <label class="block text-slate-700 font-bold mb-2" for="adore">Ce que vous avez adoré 💚</label>
-                        <textarea name="Ce que j'ai adoré" id="adore" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'ambiance, un stand en particulier..." required></textarea>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-slate-700 font-bold mb-2" for="ameliorer">Ce qu'on peut améliorer 🛠️</label>
-                        <textarea name="Ce qu'on peut améliorer" id="ameliorer" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="L'attente, une nouvelle idée de jeu..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" id="submit-avis-btn" class="mt-2 bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl w-full shadow-md hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95 flex justify-center items-center">
-                        <i class="fa-solid fa-paper-plane mr-2" id="submit-icon"></i> 
-                        <span id="submit-text">Envoyer mon avis</span>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Message de succès (Caché par défaut) -->
-            <div id="avis-success-message" class="hidden p-8 text-center flex-1 flex flex-col justify-center items-center">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center text-3xl mb-4">
-                    <i class="fa-solid fa-check"></i>
-                </div>
-                <h3 class="text-xl font-black text-slate-800 mb-2">Merci beaucoup !</h3>
-                <p class="text-slate-600 mb-6">Votre avis a bien été envoyé de manière anonyme à l'APES.</p>
-                <button class="bg-slate-200 text-slate-700 font-bold py-2 px-6 rounded-xl w-full hover:bg-slate-300 transition-all" onclick="closeAvisModal()">Fermer</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Script de l'application -->
     <script>
         // Gestion de la navigation entre les vues
@@ -728,6 +722,7 @@
             const activeView = document.getElementById('view-' + tabId);
             if (activeView) {
                 activeView.classList.remove('hidden');
+                // Pour le plan et l'accueil, on utilise flex
                 if (tabId === 'plan' || tabId === 'accueil') {
                     activeView.classList.add('flex');
                 }
@@ -781,6 +776,86 @@
             }
         }
 
+        // Gestion du Formulaire d'Avis (Web3Forms)
+        function openAvisModal() {
+            const modal = document.getElementById('avis-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+                // Reset form state if reopened
+                document.getElementById('avis-form').reset();
+                document.getElementById('form-result').classList.add('hidden');
+                document.getElementById('form-result').classList.remove('flex');
+            }
+        }
+
+        function closeAvisModal() {
+            const modal = document.getElementById('avis-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            
+            const form = document.getElementById('avis-form');
+            const resultDiv = document.getElementById('form-result');
+            const spinner = document.getElementById('form-spinner');
+            const successIcon = document.getElementById('form-success-icon');
+            const statusTitle = document.getElementById('form-status-title');
+            const statusMsg = document.getElementById('form-status-msg');
+            const closeBtn = document.getElementById('form-close-btn');
+
+            // Afficher l'écran de chargement
+            resultDiv.classList.remove('hidden');
+            resultDiv.classList.add('flex');
+            spinner.classList.remove('hidden');
+            successIcon.classList.add('hidden');
+            closeBtn.classList.add('hidden');
+            statusTitle.innerText = "Envoi en cours...";
+            statusMsg.innerText = "Merci de patienter.";
+            statusMsg.classList.remove('text-red-600');
+
+            // Récupérer les données
+            const formData = new FormData(form);
+
+            // Appel AJAX vers Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Succès
+                    spinner.classList.add('hidden');
+                    successIcon.classList.remove('hidden');
+                    statusTitle.innerText = "Merci pour votre avis !";
+                    statusMsg.innerText = "Votre message a bien été envoyé à l'équipe de l'APES.";
+                    closeBtn.classList.remove('hidden');
+                } else {
+                    // Erreur API
+                    console.log(response);
+                    spinner.classList.add('hidden');
+                    statusTitle.innerText = "Oups...";
+                    statusMsg.innerText = json.message || "Une erreur est survenue lors de l'envoi.";
+                    statusMsg.classList.add('text-red-600');
+                    closeBtn.classList.remove('hidden');
+                }
+            })
+            .catch(error => {
+                // Erreur Réseau
+                console.log(error);
+                spinner.classList.add('hidden');
+                statusTitle.innerText = "Erreur de connexion";
+                statusMsg.innerText = "Vérifiez votre connexion internet et réessayez.";
+                statusMsg.classList.add('text-red-600');
+                closeBtn.classList.remove('hidden');
+            });
+        }
+
         // Gestion de Zootopie
         function openZootopieModal() {
             const modal = document.getElementById('zootopie-modal');
@@ -832,67 +907,6 @@
             }
         }
 
-        // Gestion du formulaire d'Avis
-        function openAvisModal() {
-            const modal = document.getElementById('avis-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex', 'animate-fade-in');
-                // Reset form state if opened again
-                document.getElementById('avis-form-content').classList.remove('hidden');
-                document.getElementById('avis-success-message').classList.add('hidden');
-                document.getElementById('avis-form').reset();
-            }
-        }
-
-        function closeAvisModal() {
-            const modal = document.getElementById('avis-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex', 'animate-fade-in');
-            }
-        }
-
-        // Envoi dynamique via Web3Forms (sans rechargement, sans nouvel onglet)
-        document.getElementById('avis-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche le comportement par défaut (pas de nouvel onglet)
-            
-            const form = e.target;
-            const btnText = document.getElementById('submit-text');
-            const btnIcon = document.getElementById('submit-icon');
-            
-            // Animation d'attente sur le bouton
-            btnText.innerText = "Envoi en cours...";
-            btnIcon.className = "fa-solid fa-circle-notch fa-spin mr-2";
-            
-            const formData = new FormData(form);
-            
-            // Requête invisible vers le serveur
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                if (response.status == 200) {
-                    // Succès : on affiche le message de remerciement
-                    document.getElementById('avis-form-content').classList.add('hidden');
-                    document.getElementById('avis-success-message').classList.remove('hidden');
-                    form.reset();
-                } else {
-                    // Erreur serveur
-                    alert("Oups, le service est momentanément indisponible. Réessayez plus tard.");
-                }
-            })
-            .catch(error => {
-                alert("Erreur de connexion internet. L'avis n'a pas pu être envoyé.");
-            })
-            .finally(() => {
-                // Remise à zéro du bouton dans tous les cas
-                btnText.innerText = "Envoyer mon avis";
-                btnIcon.className = "fa-solid fa-paper-plane mr-2";
-            });
-        });
-
         // Attendre que le DOM soit complètement chargé avant d'exécuter le script
         document.addEventListener('DOMContentLoaded', () => {
             // Génération des lumières du chapiteau
@@ -925,12 +939,14 @@
                     const instructionsEl = document.getElementById('a2hs-instructions');
                     const promptEl = document.getElementById('a2hs-prompt');
 
-                    if (isIOS) {
-                        instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-arrow-up-from-bracket mx-1 text-blue-500"></i> ci-dessous puis sur <strong>Sur l\'écran d\'accueil</strong>.';
-                        promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
-                    } else if (isAndroid) {
-                        instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-ellipsis-vertical mx-1"></i> dans votre navigateur puis sur <strong>Ajouter à l\'écran d\'accueil</strong>.';
-                        promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                    if (promptEl && instructionsEl) {
+                        if (isIOS) {
+                            instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-arrow-up-from-bracket mx-1 text-blue-500"></i> ci-dessous puis sur <strong>Sur l\'écran d\'accueil</strong>.';
+                            promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                        } else if (isAndroid) {
+                            instructionsEl.innerHTML = 'Appuyez sur <i class="fa-solid fa-ellipsis-vertical mx-1"></i> dans votre navigateur puis sur <strong>Ajouter à l\'écran d\'accueil</strong>.';
+                            promptEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                        }
                     }
                 }
             }, 3000); // Apparaît au bout de 3 secondes
@@ -939,9 +955,11 @@
         // Fonction pour fermer définitivement le popup d'installation
         function dismissA2HS() {
             const promptEl = document.getElementById('a2hs-prompt');
-            promptEl.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
-            // Mémorise le choix dans le navigateur pour ne plus jamais l'afficher
-            localStorage.setItem('a2hs-dismissed', 'true');
+            if (promptEl) {
+                promptEl.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+                // Mémorise le choix dans le navigateur pour ne plus jamais l'afficher
+                localStorage.setItem('a2hs-dismissed', 'true');
+            }
         }
     </script>
 </body>
