@@ -98,7 +98,7 @@
 
                     <!-- Crédit -->
                     <div class="mt-4 text-center w-full">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par D.LAZZARO pour l'APES</p>
                     </div>
                 </div>
 
@@ -185,7 +185,7 @@
 
                     <!-- Crédit -->
                     <div class="mt-4 text-center w-full">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par D.LAZZARO pour l'APES</p>
                     </div>
                 </div>
 
@@ -334,7 +334,7 @@
 
                     <!-- Crédit -->
                     <div class="mt-2 text-center w-full">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par D.LAZZARO pour l'APES</p>
                     </div>
                 </div>
 
@@ -476,7 +476,7 @@
 
                     <!-- Crédit -->
                     <div class="mt-4 text-center w-full">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par D.LAZZARO pour l'APES</p>
                     </div>
                 </div>
 
@@ -509,9 +509,66 @@
                         </ul>
                     </div>
 
+                    <!-- Espace Bénévoles (Sécurisé) -->
+                    <div class="bg-slate-800 rounded-xl shadow-md border border-slate-700 p-4 mb-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-500/10 rounded-bl-full pointer-events-none"></div>
+                        <h3 class="font-bold mb-2 flex items-center justify-between cursor-pointer" onclick="toggleBenevolesLogin()">
+                            <span class="flex items-center text-yellow-400"><i class="fa-solid fa-lock mr-2"></i> Espace Bénévoles</span>
+                            <i id="benevoles-chevron" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </h3>
+                        
+                        <!-- Zone de connexion -->
+                        <div id="benevoles-login" class="hidden flex-col gap-3 mt-4 animate-fade-in">
+                            <p class="text-xs text-slate-300">Accès réservé à l'équipe organisatrice.</p>
+                            <div class="flex gap-2">
+                                <input type="password" id="benevoles-pwd" class="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400" placeholder="Mot de passe...">
+                                <button onclick="checkBenevolesPwd()" class="bg-yellow-500 text-slate-900 font-bold px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors">OK</button>
+                            </div>
+                            <p id="benevoles-error" class="text-red-400 text-xs hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Mot de passe incorrect</p>
+                        </div>
+
+                        <!-- Zone de contenu (Cachée par défaut) -->
+                        <div id="benevoles-content" class="hidden flex-col gap-4 mt-4 pt-4 border-t border-slate-700 animate-fade-in">
+                            <!-- Planning -->
+                            <div class="bg-slate-900 rounded-lg p-3 border border-slate-700">
+                                <h4 class="text-yellow-400 font-bold text-sm mb-3"><i class="fa-regular fa-calendar-days mr-2"></i> Planning des stands</h4>
+                                <div class="relative group cursor-pointer" onclick="openBenevolesImgModal()">
+                                    <img src="https://domlaz-bot.github.io/apes/benevoles.png" alt="Planning Bénévoles" class="w-full rounded border border-slate-600 opacity-90 group-hover:opacity-100 transition-opacity">
+                                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div class="bg-slate-900/90 text-white px-3 py-1.5 rounded-full backdrop-blur-sm text-xs font-bold shadow-lg">
+                                            <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Agrandir
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact & WhatsApp -->
+                            <div class="bg-slate-900 rounded-lg p-3 border border-slate-700">
+                                <h4 class="text-emerald-400 font-bold text-sm mb-3"><i class="fa-solid fa-headset mr-2"></i> Communication</h4>
+                                
+                                <div class="flex items-center gap-3 mb-4 bg-slate-800 p-2.5 rounded-lg border border-slate-700">
+                                    <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-user-tie text-slate-300"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-bold text-white">Domenico</p>
+                                        <p class="text-[10px] text-slate-400 leading-tight">Coordination Bénévoles</p>
+                                    </div>
+                                    <a href="tel:0770014415" class="bg-blue-500/20 text-blue-400 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-blue-500/30 transition-colors">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </a>
+                                </div>
+
+                                <a href="https://chat.whatsapp.com/HwExWwF7x9AKPLsr3YHGJx" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-[#25D366] text-white font-bold py-2.5 px-4 rounded-lg hover:bg-[#1EBE5D] transition-all active:scale-95 text-sm shadow-md">
+                                    <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Groupe WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Crédit (Poussé en bas par mt-auto) -->
                     <div class="mt-auto pt-4 text-center w-full">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par l'APES</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Application créée par D.LAZZARO pour l'APES</p>
                     </div>
                 </div>
 
@@ -576,6 +633,17 @@
         </button>
         <div class="relative w-full h-full flex items-center justify-center p-4">
             <img src="https://domlaz-bot.github.io/apes/plan.png" alt="Plan de la Fête Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+        </div>
+        <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
+    </div>
+
+    <!-- Modal Planning Bénévoles -->
+    <div id="benevoles-img-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col items-center justify-center p-2 backdrop-blur-sm transition-opacity" onclick="closeBenevolesImgModal()">
+        <button class="absolute top-6 right-6 text-white/80 hover:text-white text-4xl p-2 z-10 transition-colors cursor-pointer" onclick="closeBenevolesImgModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <img src="https://domlaz-bot.github.io/apes/benevoles.png" alt="Planning Bénévoles Agrandissement" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
         </div>
         <p class="absolute bottom-8 text-white/60 text-sm"><i class="fa-solid fa-xmark mr-1"></i> Touchez pour fermer</p>
     </div>
@@ -778,6 +846,66 @@
 
         function closePlanModal() {
             const modal = document.getElementById('plan-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex', 'animate-fade-in');
+            }
+        }
+
+        // --- GESTION ESPACE BENEVOLES ---
+        function toggleBenevolesLogin() {
+            const loginArea = document.getElementById('benevoles-login');
+            const contentArea = document.getElementById('benevoles-content');
+            const chevron = document.getElementById('benevoles-chevron');
+            
+            // Si la session est déjà déverrouillée
+            if (sessionStorage.getItem('benevoles-unlocked') === 'true') {
+                contentArea.classList.toggle('hidden');
+                contentArea.classList.toggle('flex');
+                chevron.classList.toggle('rotate-180');
+                loginArea.classList.add('hidden');
+                loginArea.classList.remove('flex');
+                return;
+            }
+
+            // Sinon, on bascule l'affichage du formulaire de mot de passe
+            loginArea.classList.toggle('hidden');
+            loginArea.classList.toggle('flex');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        function checkBenevolesPwd() {
+            const pwd = document.getElementById('benevoles-pwd').value;
+            const errorMsg = document.getElementById('benevoles-error');
+            const loginArea = document.getElementById('benevoles-login');
+            const contentArea = document.getElementById('benevoles-content');
+
+            // Mot de passe pour déverrouiller l'espace
+            if (pwd.trim().toUpperCase() === 'APES2026') {
+                errorMsg.classList.add('hidden');
+                loginArea.classList.add('hidden');
+                loginArea.classList.remove('flex');
+                
+                contentArea.classList.remove('hidden');
+                contentArea.classList.add('flex');
+                
+                // Mémorise que l'utilisateur est un bénévole pour cette session
+                sessionStorage.setItem('benevoles-unlocked', 'true');
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function openBenevolesImgModal() {
+            const modal = document.getElementById('benevoles-img-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex', 'animate-fade-in');
+            }
+        }
+
+        function closeBenevolesImgModal() {
+            const modal = document.getElementById('benevoles-img-modal');
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex', 'animate-fade-in');
